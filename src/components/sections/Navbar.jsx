@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react"
 import { useLenis } from 'lenis/react'
 import { ThemeToggle } from "@/components/ui/ThemeToggle"
 import { cn } from "@/lib/utils"
+import "./Navbar.css"
 
 const navLinks = [
     { name: "Home", href: "#hero" },
@@ -74,52 +75,40 @@ export function Navbar() {
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 1 }}
-            className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out",
-                scrolled
-                    ? "py-2 md:py-4 bg-background/80 backdrop-blur-xl border-b border-white/5 shadow-xl shadow-black/5"
-                    : "py-3 md:py-6 bg-background/40 backdrop-blur-md border-b border-white/5"
-            )}
+            className={cn("navbar", scrolled && "scrolled")}
         >
-            <div className="container mx-auto flex items-center justify-between px-6 py-2 md:py-4">
+            <div className="navbar-container">
                 <a
                     href="#hero"
                     onClick={(e) => handleNavClick(e, '#hero')}
-                    className="text-2xl font-bold text-foreground block tracking-tighter"
+                    className="navbar-logo"
                 >
-                    Mit<span className="text-blue-500">.</span>
+                    Mit<span className="navbar-logo-dot">.</span>
                 </a>
 
                 {/* Desktop Menu */}
-                <div className="hidden md:flex items-center space-x-8">
+                <div className="desktop-menu">
                     {navLinks.map((link) => (
                         <a
                             key={link.name}
                             href={link.href}
                             onClick={(e) => handleNavClick(e, link.href)}
                             className={cn(
-                                "text-sm font-medium transition-colors relative group",
-                                activeSection === link.href.slice(1)
-                                    ? "text-primary"
-                                    : "text-foreground/80 hover:text-foreground"
+                                "nav-link group",
+                                activeSection === link.href.slice(1) && "active"
                             )}
                         >
                             {link.name}
-                            <span className={cn(
-                                "absolute left-0 -bottom-1 h-0.5 bg-blue-500 transition-all",
-                                activeSection === link.href.slice(1)
-                                    ? "w-full"
-                                    : "w-0 group-hover:w-full"
-                            )} />
+                            <span className="nav-link-underline" />
                         </a>
                     ))}
                     <ThemeToggle />
                 </div>
 
                 {/* Mobile Menu Button */}
-                <div className="md:hidden flex items-center space-x-4">
+                <div className="mobile-menu-btn-container">
                     <ThemeToggle />
-                    <button onClick={() => setIsOpen(!isOpen)} className="text-foreground p-2 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors cursor-pointer">
+                    <button onClick={() => setIsOpen(!isOpen)} className="mobile-menu-toggle">
                         {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                     </button>
                 </div>
@@ -132,19 +121,17 @@ export function Navbar() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-background/95 backdrop-blur-xl border-b border-white/10 overflow-hidden"
+                        className="mobile-menu-dropdown"
                     >
-                        <div className="flex flex-col items-center space-y-6 py-8">
+                        <div className="mobile-menu-links">
                             {navLinks.map((link) => (
                                 <a
                                     key={link.name}
                                     href={link.href}
                                     onClick={(e) => handleNavClick(e, link.href)}
                                     className={cn(
-                                        "text-lg font-medium transition-colors",
-                                        activeSection === link.href.slice(1)
-                                            ? "text-blue-500"
-                                            : "text-foreground hover:text-blue-500"
+                                        "mobile-link",
+                                        activeSection === link.href.slice(1) && "active"
                                     )}
                                 >
                                     {link.name}

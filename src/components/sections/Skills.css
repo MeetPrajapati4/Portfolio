@@ -1,0 +1,133 @@
+.skills-section {
+    padding-top: 6rem;
+    /* py-24 */
+    padding-bottom: 6rem;
+    background-color: hsla(var(--secondary), 0.2);
+}
+
+.skills-container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.skills-header {
+    text-align: center !important;
+    /* Force center alignment if inherited styles conflict */
+    text-align: center;
+    margin-bottom: 5rem;
+    /* mb-20 */
+}
+
+.skills-title {
+    font-size: 1.875rem;
+    /* text-3xl */
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    /* mb-6 */
+}
+
+@media (min-width: 768px) {
+    .skills-title {
+        font-size: 3rem;
+        /* text-5xl */
+    }
+}
+
+.skills-title-gradient {
+    background: linear-gradient(to right, #60a5fa, #9333ea);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.skills-description {
+    color: hsl(var(--muted-foreground));
+    font-size: 1.125rem;
+    /* text-lg */
+}
+
+.skills-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    /* space-y-12 */
+}
+
+.skills-category-mb {
+    margin-bottom: 1.5rem;
+    /* mb-6 */
+}
+
+.skills-category-title {
+    font-size: 1.25rem;
+    /* text-xl */
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    /* mb-6 */
+    display: flex;
+    align-items: center;
+}
+
+.skills-category-indicator {
+    width: 0.5rem;
+    /* w-2 */
+    height: 2rem;
+    /* h-8 */
+    background-color: hsl(var(--primary));
+    border-radius: 9999px;
+    /* rounded-full */
+    margin-right: 0.75rem;
+    /* mr-3 */
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    /* gap-4 */
+}
+
+.skill-badge {
+    padding-left: 1.5rem;
+    /* px-6 */
+    padding-right: 1.5rem;
+    padding-top: 0.75rem;
+    /* py-3 */
+    padding-bottom: 0.75rem;
+    border-radius: 9999px;
+    /* rounded-full */
+    background-color: hsla(var(--card), 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    /* shadow-sm */
+    transition: all 0.3s;
+    cursor: default;
+}
+
+/* Hover effects handled by Framer Motion for scale/y, but border/shadow here */
+.skill-badge:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    /* shadow-lg */
+    border-color: rgba(59, 130, 246, 0.3);
+    /* border-blue-500/30 */
+}
+
+.skill-text {
+    font-size: 0.875rem;
+    /* text-sm */
+    font-weight: 500;
+    color: hsl(var(--foreground));
+    transition: all 0.3s;
+}
+
+.skill-badge:hover .skill-text {
+    background: linear-gradient(to right, #60a5fa, #a855f7);
+    /* blue-400 to purple-500 */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}

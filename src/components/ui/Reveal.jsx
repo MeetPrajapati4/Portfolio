@@ -1,5 +1,6 @@
 import { motion, useInView, useAnimation } from "framer-motion"
 import { useEffect, useRef } from "react"
+import "./Reveal.css"
 
 export function Reveal({ children, width = "fit-content", delay = 0.25, variant = "slide" }) {
     const ref = useRef(null)
@@ -30,11 +31,15 @@ export function Reveal({ children, width = "fit-content", delay = 0.25, variant 
         skew: {
             hidden: { opacity: 0, skewY: 12, y: 100, filter: "blur(10px)" },
             visible: { opacity: 1, skewY: 0, y: 0, filter: "blur(0px)" }
+        },
+        blur: {
+            hidden: { opacity: 0, filter: "blur(20px)", scale: 0.9 },
+            visible: { opacity: 1, filter: "blur(0px)", scale: 1 }
         }
     }
 
     return (
-        <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }} className="py-2">
+        <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }} className="reveal-container">
             <motion.div
                 variants={variants[variant]}
                 initial="hidden"
@@ -57,7 +62,7 @@ export function Reveal({ children, width = "fit-content", delay = 0.25, variant 
                     initial="hidden"
                     animate={slideControls}
                     transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1], delay: delay }}
-                    className="absolute top-0 bottom-0 left-0 right-0 bg-primary z-30"
+                    className="reveal-slide-overlay"
                 />
             )}
         </div>

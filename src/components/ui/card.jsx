@@ -1,6 +1,7 @@
 import * as React from "react"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
+import "./card.css"
 
 const Card = React.forwardRef(({ className, animate = true, ...props }, ref) => {
     const Comp = animate ? motion.div : "div"
@@ -8,7 +9,7 @@ const Card = React.forwardRef(({ className, animate = true, ...props }, ref) => 
         <Comp
             ref={ref}
             className={cn(
-                "rounded-xl border border-border/50 bg-card/50 text-card-foreground shadow-sm backdrop-blur-xl",
+                "card",
                 className
             )}
             {...props}
@@ -20,7 +21,7 @@ Card.displayName = "Card"
 const CardHeader = React.forwardRef(({ className, ...props }, ref) => (
     <div
         ref={ref}
-        className={cn("flex flex-col space-y-1.5 p-6", className)}
+        className={cn("card-header", className)}
         {...props}
     />
 ))
@@ -30,7 +31,7 @@ const CardTitle = React.forwardRef(({ className, ...props }, ref) => (
     <h3
         ref={ref}
         className={cn(
-            "text-2xl font-semibold leading-none tracking-tight",
+            "card-title",
             className
         )}
         {...props}
@@ -41,21 +42,21 @@ CardTitle.displayName = "CardTitle"
 const CardDescription = React.forwardRef(({ className, ...props }, ref) => (
     <p
         ref={ref}
-        className={cn("text-sm text-muted-foreground", className)}
+        className={cn("card-description", className)}
         {...props}
     />
 ))
 CardDescription.displayName = "CardDescription"
 
 const CardContent = React.forwardRef(({ className, ...props }, ref) => (
-    <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+    <div ref={ref} className={cn("card-content", className)} {...props} />
 ))
 CardContent.displayName = "CardContent"
 
 const CardFooter = React.forwardRef(({ className, ...props }, ref) => (
     <div
         ref={ref}
-        className={cn("flex items-center p-6 pt-0", className)}
+        className={cn("card-footer", className)}
         {...props}
     />
 ))

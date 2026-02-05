@@ -1,14 +1,15 @@
 import { motion } from "framer-motion";
+import "./LiquidBackground.css";
 
 export function LiquidBackground() {
     return (
-        <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div className="liquid-bg-container">
             {/* Soft Overlay */}
-            <div className="absolute inset-0 bg-background/80 backdrop-blur-[120px]" />
+            <div className="liquid-bg-overlay" />
 
             {/* Blob 1 - Purple/Blue */}
             <motion.div
-                className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-purple-500/20 dark:bg-purple-600/10 rounded-full blur-[100px]"
+                className="liquid-blob-1"
                 animate={{
                     x: [0, 80, 0],
                     y: [0, 40, 0],
@@ -24,7 +25,7 @@ export function LiquidBackground() {
 
             {/* Blob 2 - Blue/Cyan */}
             <motion.div
-                className="absolute top-[10%] right-[-10%] w-[45vw] h-[45vw] bg-blue-500/20 dark:bg-blue-600/10 rounded-full blur-[100px]"
+                className="liquid-blob-2"
                 animate={{
                     x: [0, -60, 0],
                     y: [0, 80, 0],
@@ -40,7 +41,7 @@ export function LiquidBackground() {
 
             {/* Blob 3 - Pink/Rose */}
             <motion.div
-                className="absolute bottom-[-5%] left-[15%] w-[55vw] h-[55vw] bg-pink-500/15 dark:bg-pink-600/5 rounded-full blur-[120px]"
+                className="liquid-blob-3"
                 animate={{
                     x: [0, 40, 0],
                     y: [0, -40, 0],

@@ -1,0 +1,130 @@
+/* Button BaseStyles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    border-radius: 0.375rem;
+    /* rounded-md */
+    font-size: 0.875rem;
+    /* text-sm */
+    font-weight: 500;
+    /* font-medium */
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+    cursor: pointer;
+    border: none;
+    /* Reset default border */
+}
+
+.btn:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring));
+}
+
+/* Variants */
+.btn-default {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    /* shadow-lg */
+}
+
+.btn-default:hover {
+    opacity: 0.9;
+    /* hover:bg-primary/90 approximation */
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    /* TODO: Precise shadow hover:shadow-primary/25 */
+}
+
+.btn-destructive {
+    background-color: hsl(var(--destructive));
+    color: hsl(var(--destructive-foreground));
+}
+
+.btn-destructive:hover {
+    opacity: 0.9;
+}
+
+.btn-outline {
+    border: 1px solid hsl(var(--input));
+    background-color: hsl(var(--background));
+}
+
+.btn-outline:hover {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+    border-color: hsla(var(--accent-foreground), 0.2);
+}
+
+.btn-secondary {
+    background-color: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+}
+
+.btn-secondary:hover {
+    opacity: 0.8;
+}
+
+.btn-ghost:hover {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+}
+
+.btn-link {
+    color: hsl(var(--primary));
+    text-underline-offset: 4px;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+}
+
+.btn-premium {
+    background-image: linear-gradient(to right, #2563eb, #9333ea);
+    /* blue-600 to purple-600 */
+    color: white;
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+}
+
+.btn-premium:hover {
+    background-image: linear-gradient(to right, #1d4ed8, #7e22ce);
+    /* blue-700 to purple-700 */
+    box-shadow: 0 0 30px rgba(37, 99, 235, 0.6);
+}
+
+/* Sizes */
+.btn-size-default {
+    height: 2.5rem;
+    /* h-10 */
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.btn-size-sm {
+    height: 2.25rem;
+    /* h-9 */
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    border-radius: 0.375rem;
+}
+
+.btn-size-lg {
+    height: 2.75rem;
+    /* h-11 */
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 0.375rem;
+}
+
+.btn-size-icon {
+    height: 2.5rem;
+    width: 2.5rem;
+}

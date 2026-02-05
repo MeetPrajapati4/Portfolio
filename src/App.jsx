@@ -12,6 +12,10 @@ import { SmoothScroll } from "@/components/ui/SmoothScroll"
 import { Loader } from "@/components/ui/Loader"
 import { AnimatePresence, motion } from "framer-motion"
 import { LiquidBackground } from "@/components/ui/LiquidBackground"
+import { ScrollProgress } from "@/components/ui/ScrollProgress"
+import { CustomCursor } from "@/components/ui/CustomCursor"
+import { ScrollToTop } from "@/components/ui/ScrollToTop"
+import "./App.css"
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -29,8 +33,11 @@ function App() {
           initial={{ opacity: 0, scale: 0.98, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          className="min-h-screen bg-background text-foreground transition-colors duration-300 overflow-x-hidden font-sans relative"
+          className="app-container"
         >
+          <CustomCursor />
+          <ScrollProgress />
+          <ScrollToTop />
           <LiquidBackground />
           <SmoothScroll>
             <Navbar />

@@ -1,0 +1,65 @@
+.liquid-bg-container {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.liquid-bg-overlay {
+    position: absolute;
+    inset: 0;
+    transition: background-color 0.3s;
+    background-color: hsla(var(--background), 0.8);
+    backdrop-filter: blur(120px);
+}
+
+.liquid-blob-1 {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 50vw;
+    height: 50vw;
+    background-color: hsla(270, 50%, 40%, 0.2);
+    /* purple-500/20 approx */
+    border-radius: 9999px;
+    filter: blur(100px);
+}
+
+/* For dark mode support if handled via CSS class on body/parent, or we rely on JS variables. 
+   Simplifying to use alpha on variables if possible, or fixed colors. */
+.dark .liquid-blob-1 {
+    background-color: hsla(270, 60%, 50%, 0.1);
+}
+
+.liquid-blob-2 {
+    position: absolute;
+    top: 10%;
+    right: -10%;
+    width: 45vw;
+    height: 45vw;
+    background-color: hsla(217, 91%, 60%, 0.2);
+    /* blue-500/20 approx */
+    border-radius: 9999px;
+    filter: blur(100px);
+}
+
+.dark .liquid-blob-2 {
+    background-color: hsla(221, 83%, 53%, 0.1);
+}
+
+.liquid-blob-3 {
+    position: absolute;
+    bottom: -5%;
+    left: 15%;
+    width: 55vw;
+    height: 55vw;
+    background-color: hsla(330, 81%, 60%, 0.15);
+    /* pink-500/15 approx */
+    border-radius: 9999px;
+    filter: blur(120px);
+}
+
+.dark .liquid-blob-3 {
+    background-color: hsla(330, 81%, 60%, 0.05);
+}

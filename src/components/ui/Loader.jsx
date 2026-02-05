@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import "./Loader.css";
 
 export function Loader({ onComplete }) {
     const [textIndex, setTextIndex] = useState(0);
     const [progress, setProgress] = useState(0);
-    const texts = ["Mit Prajapati", "Design", "Development", "Innovation"];
+    const texts = ["Mit Chadotara", "Design", "Development", "Innovation"];
 
     useEffect(() => {
         // Configuration
@@ -72,7 +73,7 @@ export function Loader({ onComplete }) {
 
     return (
         <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-background text-foreground overflow-hidden"
+            className="loader-container"
             initial={{ opacity: 1 }}
             exit={{
                 y: "-100%",
@@ -80,24 +81,24 @@ export function Loader({ onComplete }) {
             }}
         >
             {/* Dynamic Background */}
-            <div className="absolute inset-0 z-[-1] opacity-20">
-                <div className="absolute top-[-20%] left-[-20%] w-[50%] h-[50%] bg-primary/30 rounded-full blur-[120px] animate-pulse" />
-                <div className="absolute bottom-[-20%] right-[-20%] w-[50%] h-[50%] bg-foreground/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: "1s" }} />
+            <div className="loader-bg-wrapper">
+                <div className="loader-blob-1" />
+                <div className="loader-blob-2" style={{ animationDelay: "1s" }} />
             </div>
 
             {/* Editorial Corner Elements */}
-            <div className="absolute top-8 left-8 text-xs font-medium uppercase tracking-widest opacity-50 hidden md:block">
-                Mit Prajapati
+            <div className="loader-corner-tl">
+                Mit Chadotara
             </div>
-            <div className="absolute bottom-8 left-8 text-xs font-medium uppercase tracking-widest opacity-50 hidden md:block">
+            <div className="loader-corner-bl">
                 Loading Experience
             </div>
-            <div className="absolute bottom-8 right-8 text-5xl md:text-8xl font-bold opacity-5 tracking-tighter">
+            <div className="loader-progress-text">
                 {Math.min(Math.round(progress), 100)}%
             </div>
 
             {/* Central Kinetic Typography */}
-            <div className="relative w-full text-center px-4">
+            <div className="loader-text-wrapper">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={textIndex}
@@ -105,13 +106,13 @@ export function Loader({ onComplete }) {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        className="flex flex-wrap justify-center overflow-hidden"
+                        className="loader-text-container"
                     >
                         {texts[textIndex].split("").map((char, index) => (
                             <motion.span
                                 key={index}
                                 variants={childVariants}
-                                className="text-5xl md:text-8xl font-bold tracking-tighter inline-block"
+                                className="loader-text-char"
                             >
                                 {char === " " ? "\u00A0" : char}
                             </motion.span>
@@ -121,9 +122,9 @@ export function Loader({ onComplete }) {
             </div>
 
             {/* Detailed Progress Line */}
-            <div className="absolute bottom-0 left-0 w-full">
+            <div className="loader-progress-bar-container">
                 <motion.div
-                    className="h-1 bg-foreground"
+                    className="loader-progress-bar"
                     initial={{ width: 0 }}
                     animate={{ width: `${progress}%` }}
                     transition={{ duration: 0.1, ease: "linear" }}

@@ -1,0 +1,15 @@
+.reveal-container {
+    padding-top: 0.5rem;
+    /* py-2 */
+    padding-bottom: 0.5rem;
+}
+
+.reveal-slide-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: hsl(var(--primary));
+    z-index: 30;
+}
