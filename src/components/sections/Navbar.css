@@ -54,11 +54,13 @@
 }
 
 .navbar-logo {
-    font-size: 1.5rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.75rem;
+    /* Slightly larger */
     font-weight: 700;
     color: hsl(var(--foreground));
     display: block;
-    letter-spacing: -0.05em;
+    letter-spacing: -0.025em;
     text-decoration: none;
 }
 
@@ -80,12 +82,16 @@
 }
 
 .nav-link {
-    font-size: 0.875rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
     font-weight: 500;
     transition: color 0.3s;
     position: relative;
     color: hsla(var(--foreground), 0.8);
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .nav-link:hover,

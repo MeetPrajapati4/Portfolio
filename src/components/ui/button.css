@@ -103,14 +103,15 @@
 /* Sizes */
 .btn-size-default {
     height: 2.5rem;
-    /* h-10 */
+    min-width: 100px;
+    /* Consistent width */
     padding-left: 1rem;
     padding-right: 1rem;
 }
 
 .btn-size-sm {
     height: 2.25rem;
-    /* h-9 */
+    min-width: 80px;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     border-radius: 0.375rem;

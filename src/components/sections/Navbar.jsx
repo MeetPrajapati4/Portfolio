@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Home, User, Code, FolderGit2, Briefcase, Mail } from "lucide-react"
 import { useLenis } from 'lenis/react'
 import { ThemeToggle } from "@/components/ui/ThemeToggle"
 import { cn } from "@/lib/utils"
 import "./Navbar.css"
 
 const navLinks = [
-    { name: "Home", href: "#hero" },
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Experience", href: "#experience" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "#hero", icon: Home },
+    { name: "About", href: "#about", icon: User },
+    { name: "Skills", href: "#skills", icon: Code },
+    { name: "Projects", href: "#projects", icon: FolderGit2 },
+    { name: "Experience", href: "#experience", icon: Briefcase },
+    { name: "Contact", href: "#contact", icon: Mail },
 ]
 
 export function Navbar() {
@@ -98,6 +98,7 @@ export function Navbar() {
                                 activeSection === link.href.slice(1) && "active"
                             )}
                         >
+                            <link.icon className="w-4 h-4" />
                             {link.name}
                             <span className="nav-link-underline" />
                         </a>
