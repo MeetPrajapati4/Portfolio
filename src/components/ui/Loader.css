@@ -26,7 +26,7 @@
     background-color: hsla(var(--primary), 0.3);
     border-radius: 9999px;
     filter: blur(120px);
-    animation: loaderPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation: loaderPulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .loader-blob-2 {
@@ -38,8 +38,8 @@
     background-color: hsla(var(--foreground), 0.1);
     border-radius: 9999px;
     filter: blur(120px);
-    animation: loaderPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    animation-delay: 1s;
+    animation: loaderPulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation-delay: 3s;
 }
 
 @keyframes loaderPulse {
@@ -68,6 +68,13 @@
     /* tracking-widest */
     opacity: 0.5;
     display: none;
+}
+
+.loader-logo {
+    height: 1.5rem;
+    /* 24px */
+    width: auto;
+    opacity: 0.8;
 }
 
 @media (min-width: 768px) {

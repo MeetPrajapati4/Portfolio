@@ -11,37 +11,46 @@ export function Loader({ onComplete }) {
         // Configuration
         const textDuration = 1200; // ms per word
         const totalDuration = textDuration * texts.length; // Total time to cycle all words
-        const progressInterval = 20; // ms per progress update (smoother)
-        const progressSteps = totalDuration / progressInterval;
-        const progressIncrement = 100 / progressSteps;
+
+        // Ensure progress hits 100% exactly when text finishes
+        const progressInterval = 20;
+        const totalSteps = totalDuration / progressInterval;
+        const progressIncrement = 100 / totalSteps;
 
         // Text timer
         const textTimer = setInterval(() => {
             setTextIndex((prev) => {
-                if (prev === texts.length - 1) {
-                    clearInterval(textTimer);
-                    // Add a small delay after the final word before completing
-                    setTimeout(onComplete, 800);
-                    return prev;
+                if (prev < texts.length - 1) {
+                    return prev + 1;
                 }
-                return prev + 1;
+                clearInterval(textTimer);
+                return prev;
             });
         }, textDuration);
 
         // Progress timer
         const progressTimer = setInterval(() => {
             setProgress((prev) => {
-                if (prev >= 100) {
+                const next = prev + progressIncrement;
+                if (next >= 100) {
                     clearInterval(progressTimer);
                     return 100;
                 }
-                return prev + progressIncrement;
+                return next;
             });
         }, progressInterval);
+
+        // Completion check
+        const completionTimeout = setTimeout(() => {
+            // Ensure we show 100% for a moment
+            setProgress(100);
+            setTimeout(onComplete, 800); // Small delay to see 100%
+        }, totalDuration);
 
         return () => {
             clearInterval(textTimer);
             clearInterval(progressTimer);
+            clearTimeout(completionTimeout);
         };
     }, [onComplete]);
 
@@ -62,12 +71,12 @@ export function Loader({ onComplete }) {
     };
 
     const childVariants = {
-        hidden: { opacity: 0, y: 20, rotateX: 90 },
+        hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
         visible: {
             opacity: 1,
             y: 0,
-            rotateX: 0,
-            transition: { type: "spring", damping: 12, stiffness: 100 }
+            filter: "blur(0px)",
+            transition: { duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }
         },
     };
 
@@ -87,8 +96,9 @@ export function Loader({ onComplete }) {
             </div>
 
             {/* Editorial Corner Elements */}
-            <div className="loader-corner-tl">
-                Mit Chadotara
+            <div className="loader-corner-tl flex items-center gap-3">
+                <img src="/Logo.png" alt="Logo" className="loader-logo" />
+                <span>Mit Chadotara</span>
             </div>
             <div className="loader-corner-bl">
                 Loading Experience

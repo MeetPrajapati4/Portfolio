@@ -1,6 +1,6 @@
 .app-container {
     min-height: 100vh;
-    background-color: hsl(var(--background));
+    background-color: transparent;
     color: hsl(var(--foreground));
     transition: background-color 300ms ease, color 300ms ease;
     overflow-x: hidden;

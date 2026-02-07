@@ -11,9 +11,8 @@ import { useTheme } from "@/hooks/useTheme"
 import { SmoothScroll } from "@/components/ui/SmoothScroll"
 import { Loader } from "@/components/ui/Loader"
 import { AnimatePresence, motion } from "framer-motion"
-import { LiquidBackground } from "@/components/ui/LiquidBackground"
+import TubesCursor from "@/components/ui/tubes-curor"
 import { ScrollProgress } from "@/components/ui/ScrollProgress"
-import { CustomCursor } from "@/components/ui/CustomCursor"
 import { ScrollToTop } from "@/components/ui/ScrollToTop"
 import "./App.css"
 
@@ -24,6 +23,9 @@ function App() {
 
   return (
     <>
+      {/* Global 3D Background - Always visible */}
+      <TubesCursor />
+
       <AnimatePresence mode="wait">
         {loading && <Loader onComplete={() => setLoading(false)} />}
       </AnimatePresence>
@@ -34,11 +36,10 @@ function App() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
           className="app-container"
+          style={{ position: 'relative', zIndex: 1 }}
         >
-          <CustomCursor />
           <ScrollProgress />
           <ScrollToTop />
-          <LiquidBackground />
           <SmoothScroll>
             <Navbar />
             <main>

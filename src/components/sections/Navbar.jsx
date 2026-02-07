@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, Home, User, Code, FolderGit2, Briefcase, Mail } from "lucide-react"
 import { useLenis } from 'lenis/react'
-import { ThemeToggle } from "@/components/ui/ThemeToggle"
 import { cn } from "@/lib/utils"
 import "./Navbar.css"
 
@@ -23,7 +22,7 @@ export function Navbar() {
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 50)
+            setScrolled(window.scrollY > 20)
             if (window.scrollY < 100) {
                 setActiveSection("hero")
             }
@@ -48,7 +47,6 @@ export function Navbar() {
         }
 
         const observer = new IntersectionObserver(handleIntersection, observerOptions)
-
         const sections = ["hero", "about", "skills", "projects", "experience", "contact"]
         sections.forEach((id) => {
             const element = document.getElementById(id)
@@ -71,77 +69,91 @@ export function Navbar() {
     }
 
     return (
-        <motion.nav
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 1 }}
-            className={cn("navbar", scrolled && "scrolled")}
-        >
-            <div className="navbar-container">
-                <a
-                    href="#hero"
-                    onClick={(e) => handleNavClick(e, '#hero')}
-                    className="navbar-logo"
-                >
-                    Mit<span className="navbar-logo-dot">.</span>
-                </a>
-
-                {/* Desktop Menu */}
-                <div className="desktop-menu">
-                    {navLinks.map((link) => (
-                        <a
-                            key={link.name}
-                            href={link.href}
-                            onClick={(e) => handleNavClick(e, link.href)}
-                            className={cn(
-                                "nav-link group",
-                                activeSection === link.href.slice(1) && "active"
-                            )}
-                        >
-                            <link.icon className="w-4 h-4" />
-                            {link.name}
-                            <span className="nav-link-underline" />
-                        </a>
-                    ))}
-                    <ThemeToggle />
-                </div>
-
-                {/* Mobile Menu Button */}
-                <div className="mobile-menu-btn-container">
-                    <ThemeToggle />
-                    <button onClick={() => setIsOpen(!isOpen)} className="mobile-menu-toggle">
-                        {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-                    </button>
-                </div>
-            </div>
-
-            {/* Mobile Menu */}
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="mobile-menu-dropdown"
+        <>
+            <motion.nav
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className={cn("navbar", scrolled && "scrolled")}
+            >
+                <div className="navbar-container">
+                    <a
+                        href="#hero"
+                        onClick={(e) => handleNavClick(e, '#hero')}
+                        className="navbar-logo"
                     >
-                        <div className="mobile-menu-links">
-                            {navLinks.map((link) => (
+                        <img src="/Logo.png" alt="Logo" className="navbar-logo-img" />
+                    </a>
+
+                    {/* Desktop Menu - Gliding Glow */}
+                    <div className="desktop-menu">
+                        {navLinks.map((link) => {
+                            const isActive = activeSection === link.href.slice(1);
+                            return (
                                 <a
                                     key={link.name}
                                     href={link.href}
                                     onClick={(e) => handleNavClick(e, link.href)}
+                                    className={cn(
+                                        "nav-link",
+                                        isActive && "active"
+                                    )}
+                                >
+                                    {isActive && (
+                                        <motion.span
+                                            layoutId="active-glow"
+                                            className="nav-link-glow"
+                                            transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                                        />
+                                    )}
+                                    <span className="relative z-10 flex items-center gap-2">
+                                        {link.name}
+                                    </span>
+                                </a>
+                            )
+                        })}
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <div className="mobile-menu-btn-container">
+                        <button onClick={() => setIsOpen(!isOpen)} className="mobile-menu-toggle">
+                            {isOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
+                        </button>
+                    </div>
+                </div>
+            </motion.nav>
+
+            {/* Mobile Menu Overlay - Full Screen */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="mobile-menu-overlay"
+                    >
+                        <div className="mobile-menu-content">
+                            {navLinks.map((link, i) => (
+                                <motion.a
+                                    key={link.name}
+                                    href={link.href}
+                                    onClick={(e) => handleNavClick(e, link.href)}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: i * 0.1, duration: 0.5 }}
                                     className={cn(
                                         "mobile-link",
                                         activeSection === link.href.slice(1) && "active"
                                     )}
                                 >
                                     {link.name}
-                                </a>
+                                </motion.a>
                             ))}
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
-        </motion.nav>
+        </>
     )
 }
