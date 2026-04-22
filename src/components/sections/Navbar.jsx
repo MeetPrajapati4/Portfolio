@@ -10,7 +10,7 @@ const navLinks = [
     { name: "About", href: "#about", icon: User },
     { name: "Skills", href: "#skills", icon: Code },
     { name: "Projects", href: "#projects", icon: FolderGit2 },
-    { name: "Experience", href: "#experience", icon: Briefcase },
+    { name: "Journey", href: "#experience", icon: Briefcase },
     { name: "Contact", href: "#contact", icon: Mail },
 ]
 
@@ -58,24 +58,25 @@ export function Navbar() {
 
     const handleNavClick = (e, href) => {
         e.preventDefault()
+        const targetId = href.replace('#', '')
         if (lenis) {
             if (href === "#hero") {
                 lenis.scrollTo(0)
             } else {
                 lenis.scrollTo(href)
             }
-            setIsOpen(false)
+        } else {
+            const element = document.getElementById(targetId)
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' })
+            }
         }
+        setIsOpen(false)
     }
 
     return (
         <>
-            <motion.nav
-                initial={{ y: -100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className={cn("navbar", scrolled && "scrolled")}
-            >
+            <nav className={cn("navbar", scrolled && "scrolled")}>
                 <div className="navbar-container">
                     <a
                         href="#hero"
@@ -85,7 +86,7 @@ export function Navbar() {
                         <img src="/Logo.png" alt="Logo" className="navbar-logo-img" />
                     </a>
 
-                    {/* Desktop Menu - Gliding Glow */}
+                    {/* Desktop Menu */}
                     <div className="desktop-menu">
                         {navLinks.map((link) => {
                             const isActive = activeSection === link.href.slice(1);
@@ -94,21 +95,17 @@ export function Navbar() {
                                     key={link.name}
                                     href={link.href}
                                     onClick={(e) => handleNavClick(e, link.href)}
-                                    className={cn(
-                                        "nav-link",
-                                        isActive && "active"
-                                    )}
+                                    className={cn("nav-link", isActive && "active")}
                                 >
+                                    <link.icon />
+                                    {link.name}
                                     {isActive && (
                                         <motion.span
-                                            layoutId="active-glow"
-                                            className="nav-link-glow"
+                                            layoutId="active-indicator"
+                                            className="nav-link-indicator"
                                             transition={{ type: "spring", stiffness: 380, damping: 30 }}
                                         />
                                     )}
-                                    <span className="relative z-10 flex items-center gap-2">
-                                        {link.name}
-                                    </span>
                                 </a>
                             )
                         })}
@@ -117,38 +114,36 @@ export function Navbar() {
                     {/* Mobile Menu Button */}
                     <div className="mobile-menu-btn-container">
                         <button onClick={() => setIsOpen(!isOpen)} className="mobile-menu-toggle">
-                            {isOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
+                            {isOpen ? <X size={28} /> : <Menu size={28} />}
                         </button>
                     </div>
                 </div>
-            </motion.nav>
+            </nav>
 
-            {/* Mobile Menu Overlay - Full Screen */}
+            {/* Mobile Menu Overlay */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
+                        initial={{ x: "100%" }}
+                        animate={{ x: 0 }}
+                        exit={{ x: "100%" }}
+                        transition={{ type: "tween", duration: 0.3 }}
                         className="mobile-menu-overlay"
                     >
                         <div className="mobile-menu-content">
-                            {navLinks.map((link, i) => (
-                                <motion.a
+                            {navLinks.map((link) => (
+                                <a
                                     key={link.name}
                                     href={link.href}
                                     onClick={(e) => handleNavClick(e, link.href)}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: i * 0.1, duration: 0.5 }}
                                     className={cn(
                                         "mobile-link",
                                         activeSection === link.href.slice(1) && "active"
                                     )}
                                 >
+                                    <link.icon />
                                     {link.name}
-                                </motion.a>
+                                </a>
                             ))}
                         </div>
                     </motion.div>

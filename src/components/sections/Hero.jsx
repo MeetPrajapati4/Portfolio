@@ -97,8 +97,8 @@ export function Hero() {
                             className="h-12 px-6 rounded-full text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all duration-300 hover:scale-105"
                             onClick={handleScrollToProjects}
                         >
-                            Selected Works
                             <ArrowRight className="w-4 h-4" />
+                            Selected Works
                         </Button>
                     </Magnetic>
                     <Magnetic>
@@ -108,8 +108,8 @@ export function Hero() {
                             asChild
                         >
                             <a href={resumeFile} download="Mit_Chadotara_Resume.pdf">
-                                Download CV
                                 <Download className="w-4 h-4" />
+                                Download CV
                             </a>
                         </Button>
                     </Magnetic>

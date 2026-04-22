@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Reveal } from "@/components/ui/Reveal"
 import { Button } from "@/components/ui/button"
 import { Send, Mail, Phone, MapPin, Instagram, Linkedin } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
@@ -37,16 +36,14 @@ export function Contact() {
     return (
         <section id="contact" className="contact-section">
             <div className="contact-container">
-                <Reveal width="100%">
-                    <div className="contact-header">
-                        <h2 className="contact-title">
-                            Let's Work <span className="contact-title-highlight">Together</span>
-                        </h2>
-                        <p className="contact-subtitle">
-                            Have a project in mind or just want to say hi? I'm always open to new ideas and opportunities.
-                        </p>
-                    </div>
-                </Reveal>
+                <div className="contact-header">
+                    <h2 className="contact-title">
+                        Let's Work <span className="contact-title-highlight">Together</span>
+                    </h2>
+                    <p className="contact-subtitle">
+                        Have a project in mind or just want to say hi? I'm always open to new ideas and opportunities.
+                    </p>
+                </div>
 
                 <div className="contact-grid">
                     {/* Left Column: Social Dock & Info */}
@@ -143,7 +140,7 @@ export function Contact() {
                                 </div>
 
                                 <Button className="contact-submit-btn" size="lg" type="submit">
-                                    Send Message <Send className="ml-2 h-4 w-4" />
+                                    <Send className="h-4 w-4" /> Send Message
                                 </Button>
 
                                 {result && (

@@ -1,11 +1,11 @@
 import { motion, useScroll, useTransform } from "framer-motion"
-import { Reveal } from "@/components/ui/Reveal"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Github } from "lucide-react"
 import { useRef } from "react"
 import music4uImg from "../../Images/Music4U.png"
-import syntaxCoderImg from "../../Images/SyntaxCoder.png"
+import devvSparkImg from "../../Images/DevvSpark.png"
+import captionGeneratorImg from "../../Images/CaptionGenerator.png"
 import "./Projects.css"
 
 const projects = [
@@ -18,12 +18,20 @@ const projects = [
         image: music4uImg
     },
     {
-        title: "Syntax-Coder",
+        title: "Devv-Spark",
         description: "An AI-powered code converter and generator, featuring syntax highlighting and real-time execution.",
         tech: ["ReactJs", "TailwindCss", "Gemini", "Firebase"],
-        live: "https://syntax-coder.vercel.app",
-        repo: "https://github.com/MeetPrajapati4/SyntaxCoder",
-        image: syntaxCoderImg
+        live: "https://devv-spark.vercel.app",
+        repo: "https://github.com/MeetPrajapati4/DevvSpark",
+        image: devvSparkImg
+    },
+    {
+        title: "AI Caption Generator",
+        description: "A professional AI-driven platform that generates engaging, platform-optimized captions for social media using advanced NLP models.",
+        tech: ["ReactJs", "TailwindCss", "OpenAI", "Cloudinary"],
+        live: "",
+        repo: "",
+        image: captionGeneratorImg
     }
 ]
 
@@ -89,13 +97,13 @@ function ProjectCard({ project }) {
                     {project.live && (
                         <Button variant="premium" size="lg" className="project-btn-demo" asChild>
                             <a href={project.live} target="_blank" rel="noopener noreferrer">
-                                <ExternalLink className="mr-2 h-5 w-5" /> Demo
+                                <ExternalLink className="h-5 w-5" /> Demo
                             </a>
                         </Button>
                     )}
                     <Button variant="outline" size="lg" className="project-btn-repo" asChild>
                         <a href={project.repo} target="_blank" rel="noopener noreferrer">
-                            <Github className="mr-2 h-5 w-5" /> Repo
+                            <Github className="h-5 w-5" /> Repo
                         </a>
                     </Button>
                 </CardFooter>
@@ -112,16 +120,12 @@ export function Projects() {
 
             <div className="projects-container">
                 <div className="projects-header">
-                    <Reveal variant="skew" width="100%">
-                        <h2 className="projects-title">
-                            Selected <span className="projects-title-gradient">Works</span>
-                        </h2>
-                    </Reveal>
-                    <Reveal delay={0.2} variant="fade" width="100%">
-                        <p className="projects-subtitle">
-                            Pushing the boundaries of web development through bold design and precise engineering.
-                        </p>
-                    </Reveal>
+                    <h2 className="projects-title">
+                        Selected <span className="projects-title-gradient">Works</span>
+                    </h2>
+                    <p className="projects-subtitle">
+                        Pushing the boundaries of web development through bold design and precise engineering.
+                    </p>
                 </div>
 
                 <div className="projects-list">

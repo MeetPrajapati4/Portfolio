@@ -32,9 +32,9 @@ function App() {
 
       {!loading && (
         <motion.div
-          initial={{ opacity: 0, scale: 0.98, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
           className="app-container"
           style={{ position: 'relative', zIndex: 1 }}
         >

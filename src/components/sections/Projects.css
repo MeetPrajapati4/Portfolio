@@ -114,10 +114,9 @@
     display: flex;
     flex-direction: column;
     background-color: hsla(var(--card), 0.2);
-    backdrop-filter: blur(64px);
-    /* backdrop-blur-3xl */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.7s;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
     overflow: hidden;
     border-radius: 2.5rem;
     /* rounded-[2.5rem] */
@@ -142,8 +141,7 @@
     /* h-48 */
     background-color: hsla(var(--primary), 0.1);
     border-radius: 9999px;
-    filter: blur(80px);
-    /* blur-[80px] */
+    filter: blur(40px);
     transition: background-color 0.3s;
 }
 

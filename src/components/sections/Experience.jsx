@@ -1,9 +1,15 @@
 import { motion } from "framer-motion"
-import { Reveal } from "@/components/ui/Reveal"
 import { Briefcase, GraduationCap } from "lucide-react"
 import "./Experience.css"
 
 const experience = [
+    {
+        type: "education",
+        role: "BCA",
+        company: "Adarsh BCA College, Botad",
+        period: "Completed",
+        description: "Graduated with a strong foundation in computer applications and software development principles."
+    },
     {
         type: "work",
         role: "Full Stack Developer Intern",
@@ -17,29 +23,20 @@ const experience = [
         company: "Parul University",
         period: "Present",
         description: "Currently pursuing Master of Computer Applications with a specialization in Artificial Intelligence."
-    },
-    {
-        type: "education",
-        role: "BCA",
-        company: "Adarsh BCA College, Botad",
-        period: "Completed",
-        description: "Graduated with a strong foundation in computer applications and software development principles."
     }
-    
+
 ]
 
 export function Experience() {
     return (
         <section id="experience" className="experience-section">
             <div className="experience-container">
-                <Reveal width="100%">
-                    <div className="experience-header">
-                        <h2 className="experience-title">
-                            Journey <span className="experience-title-gradient">So Far</span>
-                        </h2>
-                        <p className="experience-description">My academic and professional timeline.</p>
-                    </div>
-                </Reveal>
+                <div className="experience-header">
+                    <h2 className="experience-title">
+                        Journey <span className="experience-title-gradient">So Far</span>
+                    </h2>
+                    <p className="experience-description">My academic and professional timeline.</p>
+                </div>
 
                 <div className="timeline-wrapper">
                     {/* Timeline Line */}

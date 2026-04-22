@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap');
 
 /* Basic CSS Reset */
 *,
@@ -8,12 +8,15 @@
   margin: 0;
   padding: 0;
   border-color: hsl(var(--border));
-  user-select: none;
 }
 
 html {
   font-family: 'Inter', sans-serif;
   scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6, .display-font {
+  font-family: 'Manrope', sans-serif;
 }
 
 body {
@@ -75,25 +78,25 @@ a {
 }
 
 .dark {
-  --background: 240 10% 3.9%;
-  --foreground: 0 0% 98%;
-  --card: 240 10% 3.9%;
-  --card-foreground: 0 0% 98%;
-  --popover: 240 10% 3.9%;
-  --popover-foreground: 0 0% 98%;
-  --primary: 0 0% 98%;
-  --primary-foreground: 240 5.9% 10%;
-  --secondary: 240 3.7% 15.9%;
-  --secondary-foreground: 0 0% 98%;
-  --muted: 240 3.7% 15.9%;
-  --muted-foreground: 240 5% 64.9%;
-  --accent: 240 3.7% 15.9%;
-  --accent-foreground: 0 0% 98%;
+  --background: 222 55% 9%; /* #0b1326 */
+  --foreground: 226 100% 93%; /* #dae2fd */
+  --card: 223 41% 14%; /* #171f33 */
+  --card-foreground: 226 100% 93%;
+  --popover: 223 41% 14%;
+  --popover-foreground: 226 100% 93%;
+  --primary: 259 100% 81%; /* #ba9eff */
+  --primary-foreground: 222 55% 9%;
+  --secondary: 182 100% 50%; /* #00f2ff */
+  --secondary-foreground: 222 55% 9%;
+  --muted: 223 41% 14%;
+  --muted-foreground: 251 10% 80%; /* #cbc4d3 */
+  --accent: 223 41% 14%;
+  --accent-foreground: 226 100% 93%;
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 0% 98%;
-  --border: 240 3.7% 15.9%;
-  --input: 240 3.7% 15.9%;
-  --ring: 240 4.9% 83.9%;
+  --border: 223 30% 20%; /* #2d3449 */
+  --input: 223 30% 20%;
+  --ring: 259 100% 81%;
 }
 
 ::view-transition-old(root),
