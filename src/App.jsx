@@ -14,6 +14,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import TubesCursor from "@/components/ui/tubes-curor"
 import { ScrollProgress } from "@/components/ui/ScrollProgress"
 import { ScrollToTop } from "@/components/ui/ScrollToTop"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import "./App.css"
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
           </SmoothScroll>
         </motion.div>
       )}
+      <SpeedInsights />
     </>
   )
 }
