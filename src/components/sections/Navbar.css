@@ -1,173 +1,709 @@
-/* Professional Navbar Design System */
+/* ==========================================================================
+   ARCHITECTURAL HORIZON COMMAND DECK (HIGH-END STUDIO NAVBAR)
+   ========================================================================== */
+
 :root {
-    --nav-height: 72px;
-    --nav-bg: rgba(6, 14, 32, 0.7);
-    --nav-border: rgba(255, 255, 255, 0.08);
-    --nav-active: #ba9eff;
+  --horizon-bg: rgba(7, 10, 19, 0.72);
+  --horizon-bg-scrolled: rgba(5, 8, 16, 0.88);
+  --horizon-border: rgba(255, 255, 255, 0.08);
+  --horizon-border-scrolled: rgba(0, 242, 255, 0.2);
+  --horizon-cyan: #00f2ff;
+  --horizon-purple: #ba9eff;
+  --horizon-text: #f8fafc;
+  --horizon-text-muted: #94a3b8;
 }
 
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: var(--nav-height);
-    z-index: 1000;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    background: transparent;
-    border-bottom: 1px solid transparent;
+/* --------------------------------------------------------------------------
+   Root Header Container
+   -------------------------------------------------------------------------- */
+.horizon-navbar-root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 1.15rem 2rem 0.5rem 2rem;
+  pointer-events: none; /* Allows canvas clicks through empty flanks */
 }
 
-.navbar.scrolled {
-    background: var(--nav-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--nav-border);
-    height: 64px;
+@media (min-width: 1200px) {
+  .horizon-navbar-root {
+    padding: 1.25rem 3.5rem 0.5rem 3.5rem;
+  }
 }
 
-.navbar-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 2rem;
+.horizon-navbar-root.scrolled {
+  padding-top: 0.65rem;
 }
 
-/* Logo */
-.navbar-logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    transition: opacity 0.2s ease;
+/* Top Laser Accent Beam */
+.horizon-top-laser {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 242, 255, 0) 15%,
+    rgba(0, 242, 255, 0.6) 40%,
+    rgba(186, 158, 255, 0.8) 60%,
+    rgba(0, 242, 255, 0) 85%,
+    transparent 100%
+  );
+  opacity: 0.7;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px rgba(0, 242, 255, 0.6));
 }
 
-.navbar-logo:hover {
+/* --------------------------------------------------------------------------
+   Inner Navbar Command Bar
+   -------------------------------------------------------------------------- */
+.horizon-navbar-inner {
+  pointer-events: auto;
+  position: relative;
+  width: 100%;
+  max-width: 1360px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 0.6rem 1rem 0.6rem 1.25rem;
+  background: var(--horizon-bg);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid var(--horizon-border);
+  border-radius: 20px;
+  box-shadow: 
+    0 16px 40px -15px rgba(0, 0, 0, 0.75),
+    0 0 25px rgba(0, 242, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.horizon-navbar-root.scrolled .horizon-navbar-inner {
+  background: var(--horizon-bg-scrolled);
+  border-color: var(--horizon-border-scrolled);
+  border-radius: 16px;
+  padding: 0.45rem 0.85rem 0.45rem 1.15rem;
+  box-shadow: 
+    0 20px 45px -12px rgba(0, 0, 0, 0.9),
+    0 0 35px rgba(0, 242, 255, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* --------------------------------------------------------------------------
+   LEFT: Identity & Monogram
+   -------------------------------------------------------------------------- */
+.horizon-brand-col {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.horizon-brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Crisp Monogram Frame */
+.horizon-monogram-frame {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.horizon-monogram-frame.small {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+}
+
+.horizon-monogram-img {
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.horizon-monogram-ambient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0, 242, 255, 0.3) 0%, transparent 75%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.horizon-brand-link:hover .horizon-monogram-frame {
+  border-color: rgba(0, 242, 255, 0.5);
+  box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+  transform: translateY(-1px) scale(1.03);
+}
+
+.horizon-brand-link:hover .horizon-monogram-img {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.7));
+}
+
+.horizon-brand-link:hover .horizon-monogram-ambient {
+  opacity: 1;
+}
+
+/* Identity Meta */
+.horizon-identity-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.horizon-name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.horizon-name {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+/* Pulsing Radar Status Dot */
+.horizon-status-sub {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.horizon-status-dot {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00f2ff;
+  box-shadow: 0 0 8px #00f2ff;
+}
+
+.horizon-status-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: rgba(0, 242, 255, 0.4);
+  animation: radarPulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes radarPulse {
+  0% {
+    transform: scale(0.8);
     opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
 }
 
-.navbar-logo-img {
-    height: 32px;
-    width: auto;
+/* --------------------------------------------------------------------------
+   CENTER: Architectural Segmented Nav Rail
+   -------------------------------------------------------------------------- */
+.horizon-nav-rail {
+  display: none;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Desktop Navigation */
-.desktop-menu {
+@media (min-width: 960px) {
+  .horizon-nav-rail {
+    display: flex;
+  }
+}
+
+.horizon-nav-track {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 0.25rem;
+  gap: 0.25rem;
+}
+
+.horizon-nav-item {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--horizon-text-muted);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.nav-index-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: rgba(148, 163, 184, 0.6);
+  transition: color 0.2s ease;
+}
+
+.nav-label {
+  letter-spacing: 0.02em;
+}
+
+.horizon-nav-item:hover {
+  color: #f8fafc;
+}
+
+.horizon-nav-item:hover .nav-index-tag {
+  color: var(--horizon-cyan);
+}
+
+.horizon-nav-item.active {
+  color: #ffffff;
+}
+
+.horizon-nav-item.active .nav-index-tag {
+  color: var(--horizon-cyan);
+}
+
+/* Sliding active indicator capsule */
+.horizon-active-indicator {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 242, 255, 0.12),
+    rgba(186, 158, 255, 0.1)
+  );
+  border: 1px solid rgba(0, 242, 255, 0.35);
+  box-shadow: 
+    0 0 16px rgba(0, 242, 255, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  z-index: -1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 2px;
+}
+
+.active-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--horizon-cyan);
+  box-shadow: 0 0 6px var(--horizon-cyan);
+}
+
+/* --------------------------------------------------------------------------
+   RIGHT: Action Col (Telemetry, Resume, CTA, Hamburger)
+   -------------------------------------------------------------------------- */
+.horizon-action-col {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* Live Studio Telemetry Pill */
+.horizon-telemetry-pill {
+  display: none;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 0.35rem 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: #cbd5e1;
+  letter-spacing: 0.04em;
+  user-select: none;
+}
+
+@media (min-width: 1140px) {
+  .horizon-telemetry-pill {
+    display: inline-flex;
+  }
+}
+
+.telemetry-coord {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.telemetry-divider {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.telemetry-time {
+  color: var(--horizon-cyan);
+  font-weight: 600;
+}
+
+/* Quick Resume Button */
+.horizon-resume-btn {
+  display: none;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 0.45rem 0.85rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #cbd5e1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+@media (min-width: 820px) {
+  .horizon-resume-btn {
+    display: inline-flex;
+  }
+}
+
+.resume-icon {
+  color: #94a3b8;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.horizon-resume-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.horizon-resume-btn:hover .resume-icon {
+  color: var(--horizon-cyan);
+  transform: translateY(-1px);
+}
+
+/* Primary Action CTA */
+.horizon-cta-action {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.48rem 1.15rem;
+  background: linear-gradient(135deg, rgba(0, 242, 255, 0.16), rgba(186, 158, 255, 0.16));
+  border: 1px solid rgba(0, 242, 255, 0.4);
+  border-radius: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  box-shadow: 0 0 16px rgba(0, 242, 255, 0.15);
+  white-space: nowrap;
+}
+
+.cta-arrow {
+  color: var(--horizon-cyan);
+  transition: transform 0.25s ease;
+}
+
+.horizon-cta-action:hover {
+  background: linear-gradient(135deg, rgba(0, 242, 255, 0.26), rgba(186, 158, 255, 0.26));
+  border-color: var(--horizon-cyan);
+  box-shadow: 0 0 25px rgba(0, 242, 255, 0.45);
+  transform: translateY(-1px);
+  color: #ffffff;
+}
+
+.horizon-cta-action:hover .cta-arrow {
+  transform: translate(2px, -2px);
+}
+
+/* --------------------------------------------------------------------------
+   Kinetic Minimalist Hamburger
+   -------------------------------------------------------------------------- */
+.horizon-hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.25s ease;
+}
+
+.horizon-hamburger:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 242, 255, 0.3);
+}
+
+.hamburger-line {
+  width: 18px;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, width 0.3s ease;
+}
+
+.horizon-hamburger.open .line-1 {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.horizon-hamburger.open .line-2 {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+@media (min-width: 960px) {
+  .horizon-hamburger {
     display: none;
-    align-items: center;
-    gap: 1.5rem;
+  }
 }
 
-@media (min-width: 1024px) {
-    .desktop-menu {
-        display: flex;
-    }
+/* --------------------------------------------------------------------------
+   Mobile Drawer Overlay & Command Center
+   -------------------------------------------------------------------------- */
+.horizon-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
 }
 
-.nav-link {
-    position: relative;
-    padding: 0.5rem 0.25rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    transition: color 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+.horizon-mobile-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 5, 12, 0.85);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
 }
 
-.nav-link:hover {
-    color: #fff;
+.horizon-mobile-drawer {
+  position: relative;
+  z-index: 10;
+  background: rgba(10, 15, 30, 0.94);
+  border: 1px solid rgba(0, 242, 255, 0.25);
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 
+    0 25px 60px -15px rgba(0, 0, 0, 0.95),
+    0 0 35px rgba(0, 242, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 520px;
+  width: 100%;
+  margin: 0 auto;
 }
 
-.nav-link.active {
-    color: var(--nav-active);
+.mobile-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.15rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.nav-link svg {
-    width: 16px;
-    height: 16px;
-    opacity: 0.6;
+.mobile-drawer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-.nav-link.active svg {
-    opacity: 1;
+.mobile-telemetry-mini {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--horizon-cyan);
+  background: rgba(0, 242, 255, 0.08);
+  border: 1px solid rgba(0, 242, 255, 0.25);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
 }
 
-/* Active Indicator */
-.nav-link-indicator {
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--nav-active);
-    border-radius: 2px;
-    box-shadow: 0 0 8px rgba(186, 158, 255, 0.5);
+/* Numbered Mobile Nav Links */
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-/* Mobile Toggle */
-.mobile-menu-btn-container {
-    display: block;
+.mobile-nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.95rem 1.15rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  text-decoration: none;
+  color: #cbd5e1;
+  transition: all 0.2s ease;
 }
 
-@media (min-width: 1024px) {
-    .mobile-menu-btn-container {
-        display: none;
-    }
+.mobile-nav-left {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
 }
 
-.mobile-menu-toggle {
-    background: transparent;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.mobile-idx {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--horizon-cyan);
 }
 
-/* Mobile Overlay */
-.mobile-menu-overlay {
-    position: fixed;
-    inset: 0;
-    background: #060e20;
-    z-index: 999;
-    display: flex;
-    flex-direction: column;
-    padding-top: var(--nav-height);
+.mobile-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f1f5f9;
 }
 
-.mobile-menu-content {
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    gap: 1rem;
+.mobile-arrow {
+  color: #64748b;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.mobile-link {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.6);
-    text-decoration: none;
-    padding: 1rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    transition: all 0.2s ease;
+.mobile-nav-row:hover,
+.mobile-nav-row.active {
+  background: rgba(0, 242, 255, 0.1);
+  border-color: rgba(0, 242, 255, 0.35);
+  transform: translateX(4px);
 }
 
-.mobile-link.active {
-    color: var(--nav-active);
-    padding-left: 0.5rem;
+.mobile-nav-row:hover .mobile-arrow,
+.mobile-nav-row.active .mobile-arrow {
+  color: var(--horizon-cyan);
+  transform: translate(2px, -2px);
 }
 
-.mobile-link svg {
-    width: 24px;
-    height: 24px;
+/* Mobile Drawer Footer */
+.mobile-drawer-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-cta-full {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  width: 100%;
+  padding: 0.95rem 1.25rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #00f2ff, #ba9eff);
+  color: #030712;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  box-shadow: 0 0 25px rgba(0, 242, 255, 0.4);
+  transition: transform 0.2s ease;
+}
+
+.mobile-cta-full:hover {
+  transform: translateY(-1px);
+}
+
+.mobile-secondary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.mobile-resume-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.mobile-resume-download:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.mobile-social-dock {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mobile-social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  transition: all 0.2s ease;
+}
+
+.mobile-social-icon:hover {
+  background: rgba(0, 242, 255, 0.15);
+  border-color: rgba(0, 242, 255, 0.4);
+  color: var(--horizon-cyan);
 }

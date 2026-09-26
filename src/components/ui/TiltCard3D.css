@@ -1,0 +1,86 @@
+.tilt-card-container {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+  transform-style: preserve-3d;
+}
+
+.tilt-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+  border-radius: 1.25rem;
+}
+
+.tilt-card-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+.tilt-card-front {
+  transform: rotateY(0deg);
+}
+
+.tilt-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotateY(180deg);
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(186, 158, 255, 0.3);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(16px);
+}
+
+.tilt-card-sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: overlay;
+  z-index: 10;
+}
+
+.tilt-flip-indicator {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.75rem;
+  font-family: monospace;
+  letter-spacing: 1px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  z-index: 20;
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.tilt-card-container:hover .tilt-flip-indicator {
+  background: rgba(186, 158, 255, 0.2);
+  border-color: rgba(186, 158, 255, 0.5);
+  color: #ffffff;
+}
+
+.tilt-flip-indicator.back {
+  background: rgba(0, 242, 255, 0.15);
+  border-color: rgba(0, 242, 255, 0.4);
+  color: #00f2ff;
+}

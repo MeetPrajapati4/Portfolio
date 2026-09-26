@@ -69,7 +69,7 @@ export function Contact() {
                             <h3 className="social-dock-title">Connect with me</h3>
                             <div className="social-dock">
                                 {[
-                                    { icon: Mail, label: "Email", href: "mailto:chadotaramit45@gmail.com", color: "#EF4444" },
+                                    { icon: Mail, label: "Email", href: "mailto:mitchadotara412@gmail.com", color: "#EF4444" },
                                     { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/chadotara-mit-0412004md", color: "#0077B5" },
                                     { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/mit_chadotara_412", color: "#E4405F" },
                                     { icon: Phone, label: "WhatsApp", href: "https://wa.me/919023614970", color: "#25D366" },

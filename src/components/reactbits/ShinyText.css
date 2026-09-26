@@ -1,0 +1,24 @@
+.shiny-text {
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: shineAnimation linear infinite;
+  text-shadow: 0 0 25px rgba(0, 242, 255, 0.2);
+}
+
+.shiny-text.disabled {
+  animation: none;
+  background-size: 100% 100%;
+  -webkit-text-fill-color: currentColor;
+}
+
+@keyframes shineAnimation {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

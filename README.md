@@ -1,112 +1,120 @@
-A personal **portfolio** website built with modern web technologies to showcase my skills, projects, and experience as a developer. [page:1]
+# Mit Chadotara — 3D Spatial Developer Portfolio
 
-## 🚀 Features
+> High-performance, scroll-driven 3D developer portfolio featuring multi-directional WebGL curved cylinder spatial galleries, React Three Fiber scenes, ReactBits design system, Lenis smooth scrolling, and responsive bento architecture.
 
-- Responsive layout for desktop and mobile devices. [page:1]  
-- Separate structure for documentation, public assets, and source code (`Doc`, `public`, `src`). [page:1]  
-- Built with JavaScript, CSS, and HTML. [page:1]  
-- Bundled and optimized using Vite. [page:1]  
-- Tailwind CSS configuration for fast UI styling. [page:1]  
+---
 
-## 🛠 Tech Stack
+## 🌟 Architecture & Tech Stack
 
-- JavaScript (main language) [page:1]  
-- CSS [page:1]  
-- HTML [page:1]  
-- Vite [page:1]  
-- Tailwind CSS [page:1]  
+- **Framework**: React 18+ / Vite
+- **3D Graphics & WebGL**: Three.js, `@react-three/fiber`, `@react-three/drei`
+- **Animation & Spatial Physics**: GSAP 3.13+ + ScrollTrigger (pinned scrubs, unified ticker loop)
+- **Component Motion**: Framer Motion
+- **Smooth Scroll**: Lenis (integrated directly into GSAP's single unified ticker loop)
+- **UI Architecture**: ReactBits Design System (SpotlightCard, ShinyText, DecryptedText, Bento Grid)
+- **Icons**: Lucide React
+- **Asset Optimization**: Sharp pipeline for high-resolution, lightweight image assets
 
-## 📁 Project Structure
+---
 
-```bash
-Portfolio/
-├── Doc/                 # Documentation and static assets (if any)
-├── public/              # Public assets served as-is
-├── src/                 # Application source code
-├── index.html           # Root HTML file
-├── package.json         # Project metadata and scripts
-├── package-lock.json    # Lockfile for dependencies
-├── postcss.config.js    # PostCSS configuration
-├── tailwind.config.js   # Tailwind CSS configuration
-└── vite.config.js       # Vite configuration
+## 🚀 Key Features
+
+1. **3D Spatial Cylinder Gallery (`CurvedImageRibbon.jsx`)**:
+   - Screen-covering, borderless 3D curved cylinder ribbon displaying persona photography.
+   - **Multi-Directional Convergence**: Each card descends from its outer 3D spatial direction high above, materializing from transparent to solid ("vanish to visible").
+   - **Pinned 360° Photo Scroll**: The section pins firmly until the user has scrolled through all photos, before continuing down the page.
+   - **Zero-Shine Matte Finish**: True-color non-reflective materials with clean, natural studio lighting.
+   - **Physics & Drag Interactivity**: Horizontal inertia drag with friction damping, click-to-focus, and telemetry HUD.
+
+2. **Unified Motion Architecture**:
+   - Lenis smooth scroll ticker hooked directly to GSAP (`gsap.ticker.add(updateTicker)` with `autoRaf={false}`).
+   - Eliminates dual requestAnimationFrame loops and guarantees synchronous ScrollTrigger calculations without micro-stutters.
+
+3. **Featured Projects Showcase**:
+   - **AskiFy AI — Knowledge Assistant**: Multimodal conversational AI with semantic vector retrieval.
+   - **Devv-Spark — Code Sandbox**: AI-driven multi-language code transformation sandbox.
+   - **Music4U — Audio Streaming**: Low-latency audio streaming with dynamic playlist CRUD.
+   - **AI Caption Generator**: NLP tone tuning and automated hashtag generation.
+
+4. **Interactive 3D Arsenal (`Skills.jsx`)**:
+   - Orbiting 3D skills sphere with interactive node telemetry inspector.
+
+---
+
+## 📁 Repository Structure
+
+```text
+PortFolio/
+├── public/
+│   ├── Logo.png                         # Official .M brand mark
+│   ├── favicon.ico                      # High-res browser favicon
+│   ├── favicons/                        # Multi-resolution favicons & touch icons
+│   ├── profile/                         # Mit Chadotara portrait photography
+│   └── projects/                        # 16:9 UI mockup project covers
+├── src/
+│   ├── components/
+│   │   ├── 3d/
+│   │   │   ├── CurvedImageRibbon.jsx    # Screen-covering 3D spatial cylinder ribbon
+│   │   │   ├── OrbitingSkillsSphere.jsx # Draggable 3D tech-stack sphere with inertia
+│   │   │   └── ScrollLinked3DObject.jsx # ScrollTrigger scrubbed 3D geometric mesh
+│   │   ├── reactbits/
+│   │   │   ├── SpotlightCard.jsx        # Cursor-following radial spotlight card
+│   │   │   ├── ShinyText.jsx            # Animated text shimmer gradient
+│   │   │   └── DecryptedText.jsx        # Matrix glyph scrambling on reveal
+│   │   ├── sections/
+│   │   │   ├── Hero.jsx                 # Dynamic typography & actions
+│   │   │   ├── About.jsx                # Engineering bio & 3D mesh object
+│   │   │   ├── Skills.jsx               # Technical stack & 3D sphere
+│   │   │   ├── Projects.jsx             # Spotlight bento grid showcase
+│   │   │   ├── Experience.jsx           # Journey & education timeline
+│   │   │   ├── Contact.jsx              # Social channels & message form
+│   │   │   └── Navbar.jsx               # Floating glass pill navbar with .M logo
+│   │   └── ui/
+│   │       ├── MagneticCursor.jsx       # GSAP magnetic proximity follower
+│   │       ├── SmoothScroll.jsx         # Unified GSAP ticker + Lenis rAF integration
+│   │       └── tubes-curor.jsx          # Interactive 3D tubes cursor background
+│   ├── App.jsx                          # Root layout composition
+│   ├── main.jsx                         # Application entrypoint
+│   └── index.css                        # Design tokens, variables & typography
+├── .gitignore                           # Production-grade git exclusions
+├── package.json                         # Dependencies & scripts
+└── vite.config.js                       # Vite bundler configuration
 ```
-[page:1]
 
-## ⚙️ Getting Started
+---
 
-Follow these steps to run the project locally.
+## 🛠️ Getting Started Locally
 
 ### Prerequisites
-
-- Node.js (LTS recommended)  
-- npm (comes with Node.js)
+- Node.js (v18.0.0 or higher recommended)
+- npm or yarn / pnpm
 
 ### Installation
-
 ```bash
-# Clone the repository
-git clone https://github.com/MeetPrajapati4/Portfolio.git
+# 1. Clone repository
+git clone https://github.com/MeetPrajapati4/PortFolio.git
 
-# Go into the project directory
-cd Portfolio
+# 2. Navigate into project directory
+cd PortFolio
 
-# Install dependencies
+# 3. Install dependencies
 npm install
-```
-[page:1]
 
-### Run in development
-
-```bash
+# 4. Start local development server
 npm run dev
 ```
 
-Then open the URL shown in your terminal (usually `http://localhost:5173/`).
-
-### Build for production
-
+### Production Build
 ```bash
+# Compile and optimize production bundle
 npm run build
-```
 
-### Preview production build
-
-```bash
+# Preview production build locally
 npm run preview
 ```
 
-## 🧩 Customization
-
-You can customize the content by editing files inside the `src` folder:
-
-- Update hero section (name, title, short bio).
-- Add or edit projects with description, tech stack, and links (GitHub, live demo).
-- Update skills, experience, and contact information.
-
-(Adjust the exact file names and component names once your structure is finalized.)
-
-## 📦 Deployment
-
-You can deploy this portfolio on:
-
-- GitHub Pages  
-- Vercel  
-- Netlify  
-
-Most platforms work directly with Vite builds: build the project (`npm run build`) and configure the output directory (`dist`) as the deploy target.
-
-## 🤝 Contributing
-
-This is a personal portfolio project, but suggestions and improvements are welcome.  
-You can:
-
-- Open an issue  
-- Create a pull request with proposed changes
-
-[page:1]
+---
 
 ## 📄 License
 
-This project is currently not licensed.  
-You can add a license (e.g., MIT) later depending on how you want others to use your code.
----
+This project is open-source and available under the [MIT License](LICENSE).

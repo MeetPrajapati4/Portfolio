@@ -1,13 +1,14 @@
 .loader-container {
     position: fixed;
     inset: 0;
-    z-index: 50;
+    z-index: 99999;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: hsl(var(--background));
+    background-color: #030712;
     color: hsl(var(--foreground));
     overflow: hidden;
+    user-select: none;
 }
 
 .loader-bg-wrapper {
